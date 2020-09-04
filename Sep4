@@ -1,0 +1,18 @@
+import os, sys, time
+
+try:
+    fname = str(sys.argv[1])
+    fsize = int(sys.argv[2])
+
+    directory = os.listdir(fname)
+
+    for file in directory:
+        print(file, os.stat(file).st_size, time.ctime(os.path.getctime(file)))
+
+except IndexError:
+    print("Unexpected error: Did you enter two arguments? Try again", sys.exc_info()[0])
+except ValueError:
+    print("Unexpected error: Your first argument should be the folder name. "
+          "\n The second argument should be an integer. Try again", sys.exc_info()[0])
+else:
+    print("\n")
